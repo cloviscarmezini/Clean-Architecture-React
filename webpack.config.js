@@ -24,7 +24,8 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        user: [
+        exclude: /node_modules/,
+        use: [
           {
             loader: 'style-loader'
           },
@@ -42,13 +43,16 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './public',
-    writeToDisk: true,
-    historyApiFallback: true
+    static: './public',
+    hot: true,
+    historyApiFallback: true,
+    devMiddleware: {
+      writeToDisk: true
+    }
   },
   externals: {
     react: 'React',
-    'react-dom': 'ReactDom'
+    'react-dom': 'ReactDOM'
   },
   plugins: [
     new CleanWebpackPlugin()

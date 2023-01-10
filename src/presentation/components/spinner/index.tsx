@@ -1,0 +1,10 @@
+import React from 'react'
+import Styles from './styles.scss'
+
+interface Props extends React.HTMLAttributes<HTMLElement> {}
+
+export const Spinner: React.FC<Props> = (props: Props) => {
+  return (
+        <div {...props} className={[Styles.spinner, props.className].join(' ')}><div/><div/><div/><div/></div>
+  )
+}
