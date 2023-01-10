@@ -1,0 +1,19 @@
+@import '../../styles/colors.scss';
+
+.header {
+    display: flex;
+    flex-direction: column;
+    background-color: $primary;
+    border-top: 40px solid $primaryDark;
+    align-items: center;
+    padding: 40px 0;
+    gap: 16px;
+
+    img {
+        max-width: 300px;
+    }
+
+    h1 {
+        color: $white;
+    }
+}
