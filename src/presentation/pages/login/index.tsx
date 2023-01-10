@@ -1,9 +1,11 @@
 import React from 'react'
 import Styles from './styles.scss'
-import Header from '@/presentation/components/LoginHeader'
-import Footer from '@/presentation/components/Footer'
-import { Input } from '@/presentation/components/Input'
-import { FormStatus } from '@/presentation/components/FormStatus'
+import {
+  LoginHeader as Header,
+  Footer,
+  Input,
+  FormStatus
+} from '@/presentation/components'
 
 const Login: React.FC = () => {
   return (
