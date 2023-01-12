@@ -1,8 +1,16 @@
 import { createContext } from 'react'
-
-type StateProps = {
-  isLoading?: boolean
-  errorMessage?: string
+interface StateProps {
+  state: {
+    isLoading: boolean
+  }
+  errorState: Record<string, string>
 }
 
-export default createContext<StateProps>({})
+const initialState: StateProps = {
+  state: {
+    isLoading: false
+  },
+  errorState: {}
+}
+
+export default createContext<StateProps>(initialState)
