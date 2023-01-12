@@ -10,6 +10,14 @@ describe('Login Component', () => {
 
     const submitButton = getByTestId('submit-button') as HTMLButtonElement
     expect(submitButton.disabled).toBeTruthy()
+
+    const emailStatus = getByTestId('email-status') as HTMLInputElement
+    expect(emailStatus.title).toBe('Campo obrigatório')
+    expect(emailStatus.textContent).toBe('🔴')
+
+    const passwordStatus = getByTestId('password-status') as HTMLInputElement
+    expect(passwordStatus.title).toBe('Campo obrigatório')
+    expect(passwordStatus.textContent).toBe('🔴')
   })
 
   // test('Shoud not render spinner and error on start', () => {
