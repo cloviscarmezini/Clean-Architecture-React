@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 interface StateProps {
   state: {
-    email: string
     isLoading: boolean
     mainError: string
   }
@@ -10,7 +9,6 @@ interface StateProps {
 
 const initialState: Omit<StateProps, 'setState'> = {
   state: {
-    email: '',
     isLoading: false,
     mainError: ''
   }
