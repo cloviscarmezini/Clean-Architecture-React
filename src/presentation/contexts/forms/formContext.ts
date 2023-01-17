@@ -1,16 +1,19 @@
 import { createContext } from 'react'
 interface StateProps {
   state: {
+    email: string
     isLoading: boolean
+    mainError: string
   }
-  errorState: Record<string, string>
+  setState: (object: object) => void
 }
 
-const initialState: StateProps = {
+const initialState: Omit<StateProps, 'setState'> = {
   state: {
-    isLoading: false
-  },
-  errorState: {}
+    email: '',
+    isLoading: false,
+    mainError: ''
+  }
 }
 
-export default createContext<StateProps>(initialState)
+export default createContext<StateProps>(initialState as StateProps)

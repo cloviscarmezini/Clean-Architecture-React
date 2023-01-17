@@ -6,11 +6,15 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 export const Input: React.FC<InputProps> = (props: InputProps) => {
   const inputName = props.name ?? ''
-  const { errorState } = useContext(Context)
-  const error = errorState[inputName]
+  const { state, setState } = useContext(Context)
+  const error = state[`${inputName}Error`]
 
   function enableInput (event: React.FocusEvent<HTMLInputElement>): void {
     event.target.readOnly = false
+  }
+
+  function handleChange (event: React.FocusEvent<HTMLInputElement>): void {
+    setState({ ...state, [inputName]: event.target.value })
   }
 
   function getStatus (): string {
@@ -23,7 +27,7 @@ export const Input: React.FC<InputProps> = (props: InputProps) => {
 
   return (
     <div className={Styles.inputWrap}>
-        <input { ...props } readOnly onFocus={enableInput} />
+        <input { ...props } data-testId={props.name} readOnly onFocus={enableInput} onChange={handleChange} />
         <span data-testId={`${inputName}-status`} title={getTitle()} className={Styles.status}>{getStatus()}</span>
     </div>
   )
