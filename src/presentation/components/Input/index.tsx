@@ -18,11 +18,11 @@ export const Input: React.FC<InputProps> = ({ name, ...rest }: InputProps) => {
   }
 
   function getStatus (): string {
-    return '🔴'
+    return error ? '🔴' : '🟢'
   }
 
   function getTitle (): string {
-    return error
+    return error || 'Tudo certo!'
   }
 
   return (
