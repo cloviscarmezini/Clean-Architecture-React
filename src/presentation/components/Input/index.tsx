@@ -4,8 +4,8 @@ import Context from '@/presentation/contexts/forms/formContext'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export const Input: React.FC<InputProps> = (props: InputProps) => {
-  const inputName = props.name ?? ''
+export const Input: React.FC<InputProps> = ({ name, ...rest }: InputProps) => {
+  const inputName = name ?? ''
   const { state, setState } = useContext(Context)
   const error = state[`${inputName}Error`]
 
@@ -27,8 +27,8 @@ export const Input: React.FC<InputProps> = (props: InputProps) => {
 
   return (
     <div className={Styles.inputWrap}>
-        <input { ...props } data-testId={props.name} readOnly onFocus={enableInput} onChange={handleChange} />
-        <span data-testId={`${inputName}-status`} title={getTitle()} className={Styles.status}>{getStatus()}</span>
+        <input data-testid={inputName} readOnly onFocus={enableInput} onChange={handleChange} { ...rest } />
+        <span data-testid={`${inputName}-status`} title={getTitle()} className={Styles.status}>{getStatus()}</span>
     </div>
   )
 }
