@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login } from '@/presentation/pages'
 
-const Router: React.FC = () => {
+export const Router: React.FC = () => {
   return (
         <BrowserRouter>
             <Routes>
@@ -14,5 +14,3 @@ const Router: React.FC = () => {
         </BrowserRouter>
   )
 }
-
-export default Router
