@@ -28,6 +28,8 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
   async function handleSubmit (event: React.FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
 
+    // if (state.isLoading) return
+
     setState(state => ({
       ...state,
       isLoading: true
@@ -55,7 +57,7 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
                   <h2>Login</h2>
                   <Input type="email" name="email" placeholder="Digite seu e-mail"/>
                   <Input type="password" name="password" placeholder="Digite sua senha"/>
-                  <button data-testid="submit-button" disabled={!!state.emailError || !!state.passwordError} type="submit">Entrar</button>
+                  <button data-testid="submit-button" disabled={!!state.emailError || !!state.passwordError || state.isLoading} type="submit">Entrar</button>
                   <span className={Styles.link}>Criar conta</span>
                   <FormStatus />
               </form>
