@@ -9,7 +9,7 @@ import {
 import Context from '@/presentation/contexts/forms/formContext'
 import { Validation } from '@/presentation/protocols/validation'
 import { Authentication } from '@/domain/usecases'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 type LoginProps = {
   validation?: Validation
@@ -17,6 +17,7 @@ type LoginProps = {
 }
 
 const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps) => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     isLoading: false,
     email: '',
@@ -47,6 +48,7 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
       })
 
       localStorage.setItem('accessToken', account?.accessToken ?? '')
+      navigate('/')
     } catch (error) {
       setState(state => ({
         ...state,
