@@ -157,4 +157,13 @@ describe('Login Component', () => {
       password
     })
   })
+
+  test('Should call Authentication only once', () => {
+    const { sut, authenticationSpy } = makeSut()
+
+    const somethingSpy = jest.spyOn(authenticationSpy, 'auth')
+    simulateValidSubmit(sut)
+    simulateValidSubmit(sut)
+    expect(somethingSpy).toBeCalledTimes(1)
+  })
 })
