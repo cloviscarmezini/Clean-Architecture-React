@@ -161,9 +161,19 @@ describe('Login Component', () => {
   test('Should call Authentication only once', () => {
     const { sut, authenticationSpy } = makeSut()
 
-    const somethingSpy = jest.spyOn(authenticationSpy, 'auth')
+    const authSpy = jest.spyOn(authenticationSpy, 'auth')
     simulateValidSubmit(sut)
     simulateValidSubmit(sut)
-    expect(somethingSpy).toBeCalledTimes(1)
+    expect(authSpy).toBeCalledTimes(1)
+  })
+
+  test('Should not call Authentication if form is invalid', () => {
+    const validationError = faker.random.words()
+    const { sut, authenticationSpy } = makeSut({ validationError })
+    const authSpy = jest.spyOn(authenticationSpy, 'auth')
+    populateEmailField(sut)
+    populatePasswordField(sut)
+    fireEvent.submit(sut.getByTestId('form'))
+    expect(authSpy).toBeCalledTimes(0)
   })
 })
