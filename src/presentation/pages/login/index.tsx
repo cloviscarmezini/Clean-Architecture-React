@@ -9,6 +9,7 @@ import {
 import Context from '@/presentation/contexts/forms/formContext'
 import { Validation } from '@/presentation/protocols/validation'
 import { Authentication } from '@/domain/usecases'
+import { Link } from 'react-router-dom'
 
 type LoginProps = {
   validation?: Validation
@@ -72,7 +73,7 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
                   <Input type="email" name="email" placeholder="Digite seu e-mail"/>
                   <Input type="password" name="password" placeholder="Digite sua senha"/>
                   <button data-testid="submit-button" disabled={!!state.emailError || !!state.passwordError || state.isLoading} type="submit">Entrar</button>
-                  <span className={Styles.link}>Criar conta</span>
+                  <Link to="/signup" data-testid="register" className={Styles.link}>Criar conta</Link>
                   <FormStatus />
               </form>
             </Context.Provider>

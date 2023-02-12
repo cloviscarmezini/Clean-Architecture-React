@@ -10,6 +10,10 @@ export const Router: React.FC = () => {
                     path="/login"
                     element={<Login />}
                 />
+                <Route
+                    path="/signup"
+                    element={<p>signup</p>}
+                />
             </Routes>
         </BrowserRouter>
   )
