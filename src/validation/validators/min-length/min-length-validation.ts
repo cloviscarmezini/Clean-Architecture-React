@@ -7,6 +7,7 @@ export class MinLengthValidation implements FieldValidation {
   }
 
   validate (value: string): Error | null {
+    if (value.length >= this.minLength) return null
     return new InvalidFieldError()
   }
 }
