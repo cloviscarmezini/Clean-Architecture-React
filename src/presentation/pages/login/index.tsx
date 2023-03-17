@@ -12,8 +12,8 @@ import { Authentication } from '@/domain/usecases'
 import { Link, useNavigate } from 'react-router-dom'
 
 type LoginProps = {
-  validation?: Validation
-  authentication?: Authentication
+  validation: Validation
+  authentication: Authentication
 }
 
 const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps) => {
@@ -40,14 +40,14 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
         isLoading: true
       }))
 
-      const account = await authentication?.auth({
+      const account = await authentication.auth({
         email: state.email,
         password: state.password
       }).catch(error => {
         throw error
       })
 
-      localStorage.setItem('accessToken', account?.accessToken ?? '')
+      localStorage.setItem('accessToken', account.accessToken ?? '')
       navigate('/')
     } catch (error) {
       setState(state => ({
@@ -61,8 +61,8 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }: LoginProps)
   useEffect(() => {
     setState(state => ({
       ...state,
-      emailError: validation?.validate('email', state.email) ?? '',
-      passwordError: validation?.validate('password', state.password) ?? ''
+      emailError: validation.validate('email', state.email) ?? '',
+      passwordError: validation.validate('password', state.password) ?? ''
     }))
   }, [state.email, state.password])
 
