@@ -1,5 +1,5 @@
 import React from 'react'
-import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, type RenderResult, waitFor } from '@testing-library/react'
 import { Login } from '@/presentation/pages'
 import { AuthenticationSpy, ValidationStub } from '@/presentation/test'
 import { faker } from '@faker-js/faker'
@@ -242,7 +242,7 @@ describe('Login Component', () => {
     const localStorageSpy = jest.spyOn(localStorage, 'setItem')
 
     await waitFor(() => {
-      return expect(localStorageSpy).toBeCalledTimes(1)
+      expect(localStorageSpy).toBeCalledTimes(1)
     }, {
       timeout: 100
     })
