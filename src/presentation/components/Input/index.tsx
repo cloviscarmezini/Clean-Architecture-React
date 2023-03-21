@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import Styles from './styles.scss'
 import Context from '@/presentation/contexts/forms/formContext'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  name: string
+}
 
-export const Input: React.FC<InputProps> = ({ name, ...rest }: InputProps) => {
-  const inputName = name ?? ''
+export const Input: React.FC<InputProps> = ({ name: inputName, ...rest }: InputProps) => {
   const { state, setState } = useContext(Context)
   const error = state[`${inputName}Error`]
 
